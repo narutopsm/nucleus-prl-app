@@ -8,6 +8,7 @@ on:
 jobs:
   build-android:
     runs-on: ubuntu-22.04
+    timeout-minutes: 60
 
     steps:
     - name: Checkout code
@@ -17,6 +18,22 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
+
+    - name: Cache Buildozer global directory
+      uses: actions/cache@v4
+      with:
+        path: ~/.buildozer
+        key: buildozer-global-${{ hashFiles('buildozer.spec') }}
+        restore-keys: |
+          buildozer-global-
+
+    - name: Cache Buildozer project directory
+      uses: actions/cache@v4
+      with:
+        path: .buildozer
+        key: buildozer-project-${{ hashFiles('buildozer.spec') }}
+        restore-keys: |
+          buildozer-project-
 
     - name: Install system dependencies
       run: |
