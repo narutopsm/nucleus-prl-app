@@ -5,35 +5,33 @@ package.name = nucleusprl
 package.domain = com.nucleus.prl
 
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,json
+source.include_exts = py,png,jpg,kv,atlas,json,ttf
 
 version = 1.0.0
 
-requirements = python3,kivy==2.3.0,pyjnius,android
+requirements = python3,kivy==2.3.0,pyjnius
 
 orientation = portrait
 fullscreen = 0
 
 icon.filename = %(source.dir)s/logo.png
 
-android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
+android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,MANAGE_EXTERNAL_STORAGE
 
 android.api = 33
-android.build_tools_version = 29.0.0
-android.minapi = 21
+android.minapi = 24
 android.ndk = 23b
-android.accept_sdk_license = True 
-android.ndk_api = 21
+android.ndk_api = 24
 android.archs = arm64-v8a
 android.allow_backup = True
 
 android.presplash_color = #0A84FF
 android.presplash_bg = logo.png
 
-# Android boot splash
-android.add_src =
+android.accept_sdk_license = True
 
 p4a.branch = master
+p4a.bootstrap = sdl2
 
 [buildozer]
 log_level = 2
